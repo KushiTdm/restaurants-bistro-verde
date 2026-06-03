@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Nunito:wght@400;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --vert: #2D6A4F;
+  --vert-clair: #52B788;
+  --vert-fonce: #1B4332;
+  --vert-pale: #95D5B2;
+  --orange: #F4A261;
+  --fond: #FAFAFA;
+  --fond-alt: #F0F4F1;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--fond);
+  color: #1a1a1a;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Nunito', sans-serif;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+@layer components {
+  .btn-vert {
+    @apply inline-flex items-center justify-center px-5 sm:px-6 py-3 bg-vert text-white rounded-full font-semibold transition-all duration-300 hover:bg-vert-clair hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center px-5 sm:px-6 py-3 border-2 border-vert text-vert rounded-full font-semibold transition-all duration-300 hover:bg-vert hover:text-white hover:shadow-lg hover:-translate-y-0.5;
+  }
+
+  .badge {
+    @apply inline-block px-2.5 py-1 rounded-full text-[10px] sm:text-xs font-semibold;
+  }
+
+  .badge-vegan { @apply badge bg-green-100 text-green-800; }
+  .badge-veggie { @apply badge bg-lime-100 text-lime-800; }
+  .badge-gluten { @apply badge bg-yellow-100 text-yellow-800; }
+
+  .card-plat {
+    @apply bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-1;
+  }
+
+  .img-cover {
+    @apply absolute inset-0 w-full h-full object-cover;
+  }
+
+  .container-x {
+    @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}
+
+/* Animations GSAP — visibles par défaut, animées si JS actif (data-anim-ready) */
+.js-ready .gsap-fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.js-ready .gsap-fade-in {
+  opacity: 0;
+}
+
+.js-ready .gsap-stagger-item {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+/* Effet de parallax */
+.parallax-img {
+  will-change: transform;
+}
+
+/* Animation flottante pour vignettes hero */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+.float-anim { animation: float 6s ease-in-out infinite; }
+.float-anim-2 { animation: float 6s ease-in-out 1.5s infinite; }
+.float-anim-3 { animation: float 6s ease-in-out 3s infinite; }
+.float-anim-4 { animation: float 6s ease-in-out 4.5s infinite; }
+
+/* Effet shine sur cards */
+.shine {
+  position: relative;
+  overflow: hidden;
+}
+.shine::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -75%;
+  width: 50%; height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.3), transparent);
+  transform: skewX(-25deg);
+  transition: left 0.7s ease;
+}
+.shine:hover::after { left: 125%; }
+
+/* Scrollbar custom */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--fond-alt); }
+::-webkit-scrollbar-thumb { background: var(--vert-clair); border-radius: 5px; }
+::-webkit-scrollbar-thumb:hover { background: var(--vert); }
+
+/* Reduce motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html { scroll-behavior: auto; }
+}
+
+/* Line clamp utility */
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
