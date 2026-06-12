@@ -53,8 +53,20 @@ export default function RootLayout({
               </ul>
             </div>
           </div>
-          <div className="max-w-6xl mx-auto px-6 mt-10 pt-8 border-t border-white/20 text-center text-green-100 text-sm">
-            © 2025 Bistro Verde — Cuisine qui fait du bien
+          <div className="max-w-6xl mx-auto px-6 mt-10 pt-8 border-t border-white/20 text-center text-green-100 text-sm space-y-2">
+            <p>© 2025 Bistro Verde — Cuisine qui fait du bien</p>
+            <p className="text-green-200/70 text-xs">
+              Conçu &amp; développé par{' '}
+              <a
+                href="https://neuraweb.tech"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-white hover:underline"
+              >
+                NeuraWeb
+              </a>
+              {' '}— agence web, automatisation &amp; intégration IA
+            </p>
           </div>
         </footer>
       </body>
