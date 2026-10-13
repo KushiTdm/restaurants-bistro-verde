@@ -33,11 +33,8 @@ export default function Header() {
     <header className={`sticky top-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white/95 backdrop-blur-md shadow-md' : 'bg-white/80 backdrop-blur-sm'}`}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between">
         <a href="/" className="flex items-center gap-2 group" aria-label="Bistro Verde - Accueil">
-          <span className="text-2xl sm:text-3xl transition-transform group-hover:rotate-12">🌿</span>
-          <div className="leading-tight">
-            <span className="font-nunito font-extrabold text-vert text-lg sm:text-xl block">Bistro Verde</span>
-            <p className="text-[10px] sm:text-xs text-gray-400 font-inter">Bio · Local · Végétarien</p>
-          </div>
+          <img src="/logo.png" alt="Bistro Verde" className="h-9 sm:h-11 w-auto transition-transform group-hover:scale-105" />
+          <span className="hidden lg:block text-xs text-gray-400 font-inter border-l border-gray-200 pl-3">Bio · Local · Végétarien</span>
         </a>
         <nav className="hidden md:flex items-center gap-6 lg:gap-8">
           {links.map((l) => {

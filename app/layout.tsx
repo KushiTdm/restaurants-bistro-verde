@@ -3,8 +3,18 @@ import './globals.css'
 import Header from './components/Header'
 
 export const metadata: Metadata = {
-  title: 'Bistro Verde — Cuisine Bio & Végétarienne',
-  description: 'Restaurant végétarien et bio à Lyon. Produits locaux, de saison, cuisinés avec passion.',
+  title: 'Bistro Verde — Restaurant végétarien & bio à Lyon | Produits locaux de saison',
+  description:
+    'Bistro Verde, restaurant végétarien et bio à Lyon : plats de saison, produits locaux, options vegan et sans gluten. Commandez en ligne ou venez déjeuner.',
+}
+
+const JSON_LD = {
+  '@context': 'https://schema.org',
+  '@type': 'Restaurant',
+  name: 'Bistro Verde',
+  servesCuisine: ['Végétarienne', 'Bio', 'Vegan'],
+  priceRange: '€€',
+  address: { '@type': 'PostalAddress', addressLocality: 'Lyon', addressCountry: 'FR' },
 }
 
 export default function RootLayout({
@@ -15,15 +25,13 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body className="bg-fond overflow-x-hidden">
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }} />
         <Header />
         <main>{children}</main>
         <footer className="bg-vert text-white pt-16 pb-8 mt-20">
           <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 md:gap-12">
             <div>
-              <div className="flex items-center gap-2 mb-4">
-                <span className="text-2xl">🌿</span>
-                <h3 className="font-nunito font-bold text-xl">Bistro Verde</h3>
-              </div>
+              <img src="/logo-light.png" alt="Bistro Verde" className="h-11 w-auto mb-4" />
               <p className="text-green-100 text-sm leading-relaxed mb-4">
                 Manger bien, c'est manger local, de saison et avec amour. Notre engagement pour une cuisine responsable depuis 2019.
               </p>
@@ -56,16 +64,15 @@ export default function RootLayout({
           <div className="max-w-6xl mx-auto px-6 mt-10 pt-8 border-t border-white/20 text-center text-green-100 text-sm space-y-2">
             <p>© 2025 Bistro Verde — Cuisine qui fait du bien</p>
             <p className="text-green-200/70 text-xs">
-              Conçu &amp; développé par{' '}
+              Site créé par{' '}
               <a
-                href="https://neuraweb.tech"
+                href="https://neuraweb.fr"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-semibold text-white hover:underline"
               >
-                NeuraWeb
+                NeuraWeb.fr
               </a>
-              {' '}— agence web, automatisation &amp; intégration IA
             </p>
           </div>
         </footer>
